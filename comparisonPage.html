@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Items</title>
+    <link rel="stylesheet" type="text/css" href="../static/style1.css">
+	<script language="JavaScript">
+	function showform(dowhat) {
+		/*
+		 * four DIVS: browse, insert, update, delete
+		 * this function sets one visible the others not
+		 */
+		if(dowhat == 'insert') {
+			document.getElementById('browse').style.display = 'none';
+			document.getElementById('insert').style.display = 'block';
+			document.getElementById('edit').style.display = 'none';
+			document.getElementById('delete').style.display = 'none';
+		} else if(dowhat == 'update') {
+			document.getElementById('browse').style.display = 'none';
+			document.getElementById('insert').style.display = 'none';
+			document.getElementById('edit').style.display = 'block';
+			document.getElementById('delete').style.display = 'none';
+		} else if(dowhat == 'delete') {
+			document.getElementById('browse').style.display = 'none';
+			document.getElementById('insert').style.display = 'none';
+			document.getElementById('edit').style.display = 'none';
+			document.getElementById('delete').style.display = 'block';
+		} else if(dowhat == 'all') {
+			document.getElementById('browse').style.display = 'block';
+			document.getElementById('insert').style.display = 'block';
+			document.getElementById('edit').style.display = 'block';
+			document.getElementById('delete').style.display = 'block';
+		} else { //by default display browse
+			document.getElementById('browse').style.display = 'block';
+			document.getElementById('insert').style.display = 'none';
+			document.getElementById('edit').style.display = 'none';
+			document.getElementById('delete').style.display = 'none';
+		}
+	}
+	function newItem() {
+		showform('insert');
+	}
+	function updateItem(item_num) {
+		showform('update');
+	}
+	function deleteItem(item_num) {
+		showform('delete');
+	}
+	function browsePeople() {
+		showform('browse');
+	}
+	function showAll() {
+		showform('all');
+	}
+	</script>
+</head>
+
+<body onload="browsePeople()">
+	<div id="browse">
+            <!-- <p>Items List</p> -->
+            <div>
+                <table border = "1" cellpadding="5">
+                    <h1 class="com-name">Artifact List</h1>
+                    <tdead>
+                        <tr>
+                            <th>Cultures</th>
+                            <th>Artifact Size</th>
+                            <th>Time Period</th>
+                            <th>Location</th>
+                            <th>Image</th>
+                            <th>Update</th>
+                        </tr>
+                    </tdead>
+                    <tbody>
+                        <tr>
+                            <td>Hopi</td>
+                            <td>2 - 3 Feet</td>
+                            <td>Current - 2000 BCE</td>
+                            <td>NE Arizona</td>
+                            <td>Insert image here</td>
+                            <td><a href="#" onClick="updateItem()">Edit</a></td>
+                        </tr>
+                        <tr>
+                            <td>Inuit</td>
+                            <td>3 - 4 Feet</td>
+                            <td>Prehistory - Present day</td>
+                            <td>Arctic Region</td>
+                            <td>Insert image here</td>
+                            <td><a href="#" onClick="updateItem()">Edit</a></td>
+                        </tr>
+                        <tr>
+                            <td >Maya</td>
+                            <td >5 Feet</td>
+                            <td >2000 BCE 16th Century CE</td>
+                            <td >Mesoamerica</td>
+                            <td>Insert image here</td>
+                            <td><a href="#" onClick="updateItem()">Edit</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br>
+                <input2>
+            </input2>
+            </div>
+
+	</div>	<!-- browse -->
+
+	<div id="insert">
+		<!-- form to INSERT new data into bsg_people-->
+		<form id="insertPerson" action="/people" method="post">
+			<legend><strong>Add Item</strong></legend>
+
+                <table border = "1" cellpadding="5">
+                    <h1 class="com-name">Artifact List</h1>
+                    <tdead>
+                        <tr>
+                            <th>Cultures</th>
+                            <th>Artifact Size</th>
+                            <th>Time Period</th>
+                            <th>Location</th>
+                            <th>Image</th>
+                            <th>Update / Delete</th>
+                        </tr>
+                    </tdead>
+                    <tbody>
+                        <tr>
+                            <td>Hopi</td>
+                            <td>2 - 3 Feet</td>
+                            <td>Current - 2000 BCE</td>
+                            <td>NE Arizona</td>
+                            <td>Insert image here</td>
+                            <td><a href="#" onClick="deleteItem()">Delete</a></td>
+                        </tr>
+                        <tr>
+                            <td>Inuit</td>
+                            <td>3 - 4 Feet</td>
+                            <td>Prehistory - Present day</td>
+                            <td>Arctic Region</td>
+                            <td>Insert image here</td>
+                            <td><a href="#" onClick="deleteItem()">Delete</a></td>
+                        </tr>
+                        <tr>
+                            <td >Maya</td>
+                            <td >5 Feet</td>
+                            <td >2000 BCE 16th Century CE</td>
+                            <td >Mesoamerica</td>
+                            <td>Insert image here</td>
+                            <td><a href="#" onClick="deleteItem()">Delete</a></td>
+                        </tr>
+                </table>
+
+
+            <!-- Create 'Add Person' and 'Cancel' buttons -->
+			<input type="submit" value="Add Item" name="Add_Item" class="btn btn-primary" style="margin:.5rem;">
+			<input class="btn" type="button" value="Cancel" onClick="browsePeople()"> 
+        </form>
+	</div><!--insert-->
+    <div id="delete">
+		<!-- form to INSERT new data into bsg_people-->
+		<form id="deletePerson" action="/people" method="post">
+			<legend><strong>Delete Item</strong></legend>
+			<fieldset>
+                <h3>Are you sure you want to delete the Item?</h3>
+                <input type="submit" value="Yes" name="Delete_Item" class="btn btn-primary" style="margin:.5rem;">
+			    <input class="btn" type="button" value="Cancel" onClick="browsePeople()"> 
+            </fieldset>
+        </form>
+	</div><!--insert-->
+	<div id="edit">
+		<!-- form to edit data in bsg_people-->
+		<form id="editPerson" action="/edit_people/{{data[0].id}}" method="post">
+			<legend><strong>Edit Item</strong></legend>
+                <table border = "1" cellpadding="5">
+                    <h1 class="com-name">Artifact List</h1>
+                    <tdead>
+                        <tr>
+                            <th>Cultures</th>
+                            <th>Artifact Size</th>
+                            <th>Time Period</th>
+                            <th>Location</th>
+                            <th>Image</th>
+                            <th>Update / Delete</th>
+                        </tr>
+                    </tdead>
+                    <tbody>
+                        <tr>
+                            <td>Hopi</td>
+                            <td>2 - 3 Feet</td>
+                            <td>Current - 2000 BCE</td>
+                            <td>NE Arizona</td>
+                            <td>Insert image here</td>
+                            <td><a href="#" onClick="deleteItem()">Delete</a></td>
+                        </tr>
+                        <tr>
+                            <td>Inuit</td>
+                            <td>3 - 4 Feet</td>
+                            <td>Prehistory - Present day</td>
+                            <td>Arctic Region</td>
+                            <td>Insert image here</td>
+                            <td><a href="#" onClick="deleteItem()">Delete</a></td>
+                        </tr>
+                        <tr>
+                            <td >Maya</td>
+                            <td >5 Feet</td>
+                            <td >2000 BCE 16th Century CE</td>
+                            <td >Mesoamerica</td>
+                            <td>Insert image here</td>
+                            <td><a href="#" onClick="deleteItem()">Delete</a></td>
+                        </tr>
+                </table>
+
+
+            <!-- Create 'Add Person' and 'Cancel' buttons -->
+			<input class="btn" type="button" value="Cancel" onClick="browsePeople()"> 
+        </form>
+        <a href="./homePage.html">
+            <button>Add Artifact</button>
+          </a>
+	</div><!--edit-->
+</body>
+</html>
