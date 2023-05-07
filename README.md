@@ -4,3 +4,4 @@ This section of the microservice is designed to generate a randomized book that 
 # Instructions
 Install requests in pycharm if you havent done so yet. 
 After installing, use get request to connect to the localhost using the provided hyperlink. For the purpose of this instruction sheet, please observe the image below.
+![alt text](https://raw.githubusercontent.com/miranded/CS361-Project/main/request1.jpg) 
