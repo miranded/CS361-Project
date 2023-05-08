@@ -5,7 +5,10 @@ This section of the microservice is designed to generate a randomized book that 
 # UML Sequence Diagram
 ![alt text](https://raw.githubusercontent.com/miranded/CS361-Project/main/microservice.jpg) 
 
-# Instructions
+# Instructions Sending
+Flask is handling the sent request when the '@app.route('/')' decorate is evoked. This slice of code communicates to flask that the function is being called. Furthermore in the if __name__ == "__main__": the port parameter is called which specifies which port is being used to listen for incoming requests. 
+
+# Instructions Receiving
 Install requests in pycharm if you havent done so yet. 
 After installing, use get request to connect to the localhost using the provided hyperlink. For the purpose of this instruction sheet, please observe the image below.
 
